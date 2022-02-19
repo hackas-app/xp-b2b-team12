@@ -1,24 +1,46 @@
 import * as React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import ProTip from '../src/ProTip';
-import Link from '../src/Link';
-import Copyright from '../src/Copyright';
+import { Box, Card, Container, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
+const LoginContainer = styled(Container)(({ theme }) => ({
+  alignItems: 'center',
+  display: 'flex',
+  height: '100%',
+  minHeight: '100vh',
+  position: 'relative',
+
+  '::before': {
+    backgroundColor: theme.palette.primary.main,
+    borderBottom: `25px solid ${theme.palette.secondary.main}`,
+    content: '" "',
+    height: '65%',
+    left: 0,
+    position: 'fixed',
+    right: 0,
+    top: 0,
+  },
+}));
 
 export default function Index() {
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Next.js example
+    <LoginContainer maxWidth="xs">
+      <Box sx={{ zIndex: 1, display: 'flex', flexDirection: 'column', width: '100%' }}>
+        <Typography
+          variant="h4"
+          component="h1"
+          gutterBottom
+          textAlign="center"
+          sx={{
+            color: 'common.white'
+          }}  
+        >
+          Acessa sua conta XP
         </Typography>
-        <Link href="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <ProTip />
-        <Copyright />
+        <Card variant="outlined">
+          <div>Hello</div>
+          <h2>Hello</h2>
+        </Card>
       </Box>
-    </Container>
+    </LoginContainer>
   );
 }
