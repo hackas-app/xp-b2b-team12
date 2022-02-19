@@ -9,15 +9,18 @@ import {
   FormControlLabel,
   TextField,
   Typography,
+  useTheme,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import Link from '../src/Link';
 
-const LoginContainer = styled(Container)(({ theme }) => ({
+const LoginBackground = styled('div')(({ theme }) => ({
   alignItems: 'center',
   display: 'flex',
   height: '100%',
   minHeight: '100vh',
   position: 'relative',
+  width: '100%',
 
   '::before': {
     backgroundColor: theme.palette.primary.main,
@@ -25,73 +28,108 @@ const LoginContainer = styled(Container)(({ theme }) => ({
     content: '" "',
     height: '65%',
     left: 0,
-    position: 'fixed',
+    position: 'absolute',
     right: 0,
     top: 0,
   },
 }));
 
+const LoginContainer = styled(Container)({
+  alignItems: 'center',
+  display: 'flex',
+});
+
+const VideoWrapper = styled('div')({
+  height: 'calc(65% - 25px)',
+  left: 0,
+  overflow: 'hidden',
+  position: 'absolute',
+  top: 0,
+  width: '100%',
+  opacity: 0.3,
+
+  video: {
+    position: 'absolute',
+    left: '-600px',
+    top: '-220px',
+    width: 'calc(100% + 600px)'
+  }
+});
+
 export default function Index() {
+  const theme = useTheme();
+
   return (
-    <LoginContainer maxWidth="xs">
-      <Box sx={{ zIndex: 1, display: 'flex', flexDirection: 'column', width: '100%' }}>
-        <Typography
-          variant="h4"
-          component="h1"
-          textAlign="center"
-          sx={{
-            color: 'common.white',
-            paddingBottom: '48px',
-          }}  
-        >
-          Acesse o XP Conecta
-        </Typography>
-        <Card
-          variant="elevation"
-          elevation={1}
-          square
-          sx={{
-            padding: '18px 36px 36px',
-          }}
-        >
-          <TextField
-            fullWidth
-            id="login"
-            label="Login"
-            margin="normal"
-            required
-            variant="standard"
-          /> 
-          <TextField
-            fullWidth
-            id="senha"
-            label="Senha"
-            margin="normal"
-            required
-            variant="standard"
-          />
-          <TextField
-            fullWidth
-            id="xp-token"
-            label="XP Token"
-            margin="normal"
-            required
-            variant="standard"
-          />
-          <FormControl fullWidth margin="normal">
-            <FormControlLabel control={<Checkbox />} label="Lembrar meus dados" />
-          </FormControl>
-          <Button
-            variant="contained"
-            disableElevation
-            color="secondary"
-            sx={{ paddingLeft: '36px', paddingRight: '36px' }}
-            size="large"
+    <LoginBackground>
+      <VideoWrapper>
+        <video aria-hidden autoPlay muted loop preload="auto">
+          <source src="/videos/pexels-tima-miroshnichenko-7579959_1.mp4" type="video/mp4" />
+        </video>
+      </VideoWrapper>
+      <LoginContainer maxWidth="xs">
+        <Box sx={{ pt: 2, pb: 2, zIndex: 1, display: 'flex', flexDirection: 'column', width: '100%' }}>
+          <Typography
+            variant="h4"
+            component="h1"
+            textAlign="center"
+            sx={{
+              color: theme.palette.common.white,
+              paddingBottom: '48px',
+            }}  
           >
-            Entrar
-          </Button>
-        </Card>
-      </Box>
-    </LoginContainer>
+            Acesse o XP Conecta
+          </Typography>
+          <Card
+            variant="elevation"
+            elevation={1}
+            square
+            sx={{
+              padding: '18px 36px 36px',
+            }}
+          >
+            <TextField
+              fullWidth
+              id="login"
+              label="Login"
+              margin="dense"
+              required
+              variant="standard"
+            /> 
+            <TextField
+              fullWidth
+              id="senha"
+              label="Senha"
+              margin="dense"
+              required
+              variant="standard"
+            />
+            <TextField
+              fullWidth
+              id="xp-token"
+              label="XP Token"
+              margin="dense"
+              required
+              variant="standard"
+            />
+            <FormControl fullWidth sx={{ mt: 1 }}>
+              <FormControlLabel control={<Checkbox />} label="Lembrar meus dados" />
+            </FormControl>
+            <Button
+              color="secondary"
+              disableElevation
+              fullWidth
+              size="large"
+              sx={{ mb: 2, mt: 2 }}
+              variant="contained"
+            >
+              Entrar
+            </Button>
+            <Link variant="body2" href="/forgot-password" sx={{ textDecorationColor: theme.palette.secondary.main }}>
+              Esqueceu a senha?
+            </Link>
+          </Card>
+        </Box>
+      </LoginContainer>
+    </LoginBackground>
   );
 }
