@@ -1,52 +1,46 @@
-# Welcome to Remix!
+# Next.js example
 
-- [Remix Docs](https://remix.run/docs)
+## How to use
 
-## Netlify Setup
+Download the example [or clone the repo](https://github.com/mui/material-ui):
 
-1. Install the [Netlify CLI](https://www.netlify.com/products/dev/):
+<!-- #default-branch-switch -->
 
 ```sh
-npm i -g netlify-cli
+curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/nextjs
+cd nextjs
 ```
 
-If you have previously installed the Netlify CLI, you should update it to the latest version:
+Install it and run:
 
 ```sh
-npm i -g netlify-cli@latest
-```
-
-2. Sign up and log in to Netlify:
-
-```sh
-netlify login
-```
-
-3. Create a new site:
-
-```sh
-netlify init
-```
-
-## Development
-
-The Netlify CLI starts your app in development mode, rebuilding assets on file changes.
-
-```sh
+npm install
 npm run dev
 ```
 
-Open up [http://localhost:3000](http://localhost:3000), and you should be ready to go!
+or:
 
-## Deployment
+<!-- #default-branch-switch -->
 
-There are two ways to deploy your app to Netlify, you can either link your app to your git repo and have it auto deploy changes to Netlify, or you can deploy your app manually. If you've followed the setup instructions already, all you need to do is run this:
+[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/nextjs)
 
-```sh
-$ npm run build
-# preview deployment
-$ netlify deploy
+[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/nextjs)
 
-# production deployment
-$ netlify deploy --prod
-```
+## The idea behind the example
+
+The project uses [Next.js](https://github.com/vercel/next.js), which is a framework for server-rendered React apps.
+It includes `@mui/material` and its peer dependencies, including `emotion`, the default style engine in MUI v5.
+If you prefer, you can [use styled-components instead](https://mui.com/guides/interoperability/#styled-components).
+
+## The link component
+
+Next.js has [a custom Link component](https://nextjs.org/docs/api-reference/next/link).
+The example folder provides adapters for usage with MUI.
+More information [in the documentation](https://mui.com/guides/routing/#next-js).
+
+## What's next?
+
+<!-- #default-branch-switch -->
+
+You now have a working example project.
+You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/getting-started/templates/) section.
