@@ -32,11 +32,18 @@ const theme = createTheme({
       light: '#fffa53',
       main: '#ffc70c',
     },
+    tertiary: {
+      main: '#FAFAFA',
+    },
     success: {
       main: '#23D567',
     },
     error: {
       main: red.A400,
+    },
+    info: {
+      main: '#51D3E3',
+      light: '#3A76D6',
     },
   },
 });
