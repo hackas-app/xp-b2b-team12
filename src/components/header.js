@@ -5,11 +5,14 @@ export default function Header({ name }) {
   const theme = useTheme();
   return (
     <Box
+      component="header"
       sx={{
         backgroundColor: theme.palette.primary.main,
         display: 'flex',
-        justifyContent: 'space-between',
         height: 72,
+        justifyContent: 'space-between',
+        mb: 4,
+        px: 2,
       }}
     >
       <Box
@@ -25,21 +28,26 @@ export default function Header({ name }) {
       <Box
         sx={{
           display: 'flex',
-          justifyContent: 'space-evenly',
           alignItems: 'center',
-          flex: 1 / 4,
+          mx: `-${theme.spacing(1)}`,
+
+          '> *': {
+            mx: 1,
+          },
         }}
       >
         <Chip label="Área do Assessor" color="info" />
         <Typography color={theme.palette.tertiary.main} variant="subtitle2">
           {name}
         </Typography>
-        <Avatar
-          sx={{ bgcolor: theme.palette.info.light }}
-          alt={`${name} avatar`}
-        >
-          {name.slice(0, 2)}
-        </Avatar>
+        {name && (
+          <Avatar
+            sx={{ bgcolor: theme.palette.info.light }}
+            alt={`${name} avatar`}
+          >
+            {name.slice(0, 2)}
+          </Avatar>
+        )}
       </Box>
     </Box>
   );
