@@ -38,7 +38,7 @@ export default function Header({ name }) {
           sx={{ bgcolor: theme.palette.info.light }}
           alt={`${name} avatar`}
         >
-          {name.slice(0, 2)}
+          {name?.slice(0, 2)}
         </Avatar>
       </Box>
     </Box>

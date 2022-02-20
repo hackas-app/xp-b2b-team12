@@ -140,7 +140,7 @@ export default function Index() {
             <Link
               style={{ textDecoration: 'none' }}
               href={{
-                pathname: '/advisor-page/',
+                pathname: '/advisor-request/',
                 query: {
                   userName,
                 },
