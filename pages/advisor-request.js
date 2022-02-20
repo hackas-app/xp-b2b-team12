@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import Image from 'next/image';
-import Box from '@mui/material/Box';
 import {
   Container,
   Typography,
@@ -10,7 +8,12 @@ import {
   FormControl,
   FormControlLabel,
   Grid,
+  Select,
+  MenuItem,
+  InputLabel,
   Divider,
+  Button,
+  Stack,
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -26,6 +29,7 @@ const AdvisorContainer = styled(Container)(({ theme }) => ({
 
 const StyledDiv = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
+  paddingBottom: 16,
 }));
 
 const Subheader = styled('div')(({ theme }) => ({
@@ -82,6 +86,14 @@ const StyledMiddleDivider = styled(Divider)(({ theme }) => ({
   background: theme.palette.secondary.main,
 }));
 
+const StyledSelect = styled(Select)(({ theme }) => ({
+  background: theme.palette.secondary.main,
+}));
+
+const StyledInputLabel = styled(InputLabel)(({ theme }) => ({
+  color: theme.palette.tertiary.main,
+}));
+
 function AdvisorPage() {
   const router = useRouter();
   const theme = useTheme();
@@ -116,95 +128,133 @@ function AdvisorPage() {
     'Sustentabilidade',
   ];
 
+  const selectOptions = [
+    '1 mês',
+    '2 meses',
+    '3 meses',
+    '4 meses',
+    '5 meses',
+    '6 meses',
+    '7 meses',
+    '8 meses',
+    '9 meses',
+    '10 meses',
+    '11 meses',
+    '12 meses',
+  ];
+
+  const [dueDate, setDueDate] = React.useState(selectOptions[1]);
+
   return (
-    <StyledDiv>
-      <Head>
-        <title>Acessor - XP Conecta</title>
-      </Head>
-      <Header name={userName} />
-      <AdvisorContainer disableGutters>
-        {/* <Image
-          src="/background/advisor_request.png"
-          alt="General Business Image"
-          width={700}
-          height={800}
-        /> */}
-        <Subheader>
-          <Typography color={theme.palette.tertiary.main} variant="h6">
-            Através do Open Finance
-          </Typography>
-          <Typography color={theme.palette.tertiary.main} variant="h4">
-            Selecione as categorias que sejam úteis para analisar os ativos para
-            compor a carteira deste cliente
-          </Typography>
-        </Subheader>
-        <Grid container spacing={2}>
-          <StyledGrid item xs={2} sm={4} md={4}>
-            <StyledControlDiv>
-              {generalFormDataA.map((value, index) => {
-                console.log('index', index);
-                if (typeof value == 'object') {
-                  return (
-                    <StyledTopic>
-                      <StyledMiddleDivider
-                        color="secondary"
-                        orientation="horizontal"
-                        variant="middle"
-                      />
-                      <StyledTopic>{value.title}</StyledTopic>
-                    </StyledTopic>
-                  );
-                } else {
-                  return (
-                    <FormControl fullWidth sx={{ mt: 2 }}>
-                      <StyledFormControlLabel
-                        control={<StyledToggle color="secondary" />}
-                        label={`${value}`}
-                        labelPlacement="start"
-                      />
-                    </FormControl>
-                  );
-                }
-              })}
-            </StyledControlDiv>
-          </StyledGrid>
-          <Grid item xs={2}>
-            <StyledDivider color="secondary" orientation="vertical">
-              {' '}
-            </StyledDivider>
+    <div>
+      <StyledDiv>
+        <Head>
+          <title>Acessor - XP Conecta</title>
+        </Head>
+        <Header name={userName} />
+        <AdvisorContainer disableGutters>
+          <Subheader>
+            <Typography color={theme.palette.tertiary.main} variant="h6">
+              Através do Open Finance
+            </Typography>
+            <Typography color={theme.palette.tertiary.main} variant="h4">
+              Selecione as categorias que sejam úteis para analisar os ativos
+              para compor a carteira deste cliente
+            </Typography>
+          </Subheader>
+          <Grid container spacing={2}>
+            <StyledGrid item xs={2} sm={4} md={4}>
+              <StyledControlDiv>
+                {generalFormDataA.map((value, index) => {
+                  console.log('index', index);
+                  if (typeof value == 'object') {
+                    return (
+                      <StyledTopic>
+                        <StyledMiddleDivider
+                          color="secondary"
+                          orientation="horizontal"
+                          variant="middle"
+                        />
+                        <StyledTopic>{value.title}</StyledTopic>
+                      </StyledTopic>
+                    );
+                  } else {
+                    return (
+                      <FormControl fullWidth sx={{ mt: 2 }}>
+                        <StyledFormControlLabel
+                          control={<StyledToggle color="secondary" />}
+                          label={`${value}`}
+                          labelPlacement="start"
+                        />
+                      </FormControl>
+                    );
+                  }
+                })}
+              </StyledControlDiv>
+            </StyledGrid>
+            <Grid item xs={2}>
+              <StyledDivider color="secondary" orientation="vertical">
+                {' '}
+              </StyledDivider>
+            </Grid>
+            <StyledGrid item xs={2} sm={4} md={4}>
+              <StyledControlDiv>
+                {generalFormDataB.map((value, index) => {
+                  console.log('index', index);
+                  if (typeof value == 'object') {
+                    return (
+                      <StyledTopic>
+                        <StyledMiddleDivider
+                          color="secondary"
+                          orientation="horizontal"
+                          variant="middle"
+                        />
+                        <StyledTopic>{value.title}</StyledTopic>
+                      </StyledTopic>
+                    );
+                  } else {
+                    return (
+                      <FormControl fullWidth sx={{ mt: 2 }}>
+                        <StyledFormControlLabel
+                          control={<StyledToggle color="secondary" />}
+                          label={`${value}`}
+                          labelPlacement="start"
+                        />
+                      </FormControl>
+                    );
+                  }
+                })}
+              </StyledControlDiv>
+            </StyledGrid>
           </Grid>
-          <StyledGrid item xs={2} sm={4} md={4}>
-            <StyledControlDiv>
-              {generalFormDataB.map((value, index) => {
-                console.log('index', index);
-                if (typeof value == 'object') {
-                  return (
-                    <StyledTopic>
-                      <StyledMiddleDivider
-                        color="secondary"
-                        orientation="horizontal"
-                        variant="middle"
-                      />
-                      <StyledTopic>{value.title}</StyledTopic>
-                    </StyledTopic>
-                  );
-                } else {
-                  return (
-                    <FormControl fullWidth sx={{ mt: 2 }}>
-                      <StyledFormControlLabel
-                        control={<StyledToggle color="secondary" />}
-                        label={`${value}`}
-                        labelPlacement="start"
-                      />
-                    </FormControl>
-                  );
-                }
-              })}
-            </StyledControlDiv>
-          </StyledGrid>
-        </Grid>
-      </AdvisorContainer>
-    </StyledDiv>
+        </AdvisorContainer>
+        <Stack
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'flex-end',
+            justifyContent: 'right',
+          }}
+          direction="row"
+          spacing={2}
+          sx={{
+            my: 2,
+            pl: 4,
+            pr: 4,
+            width: '100%',
+          }}
+        >
+          <Button
+            style={{ display: 'flex', alignSelf: 'flex-end' }}
+            variant="contained"
+            disableElevation
+            color="secondary"
+          >
+            Enviar Requisição
+          </Button>
+        </Stack>
+      </StyledDiv>
+    </div>
   );
 }
 
