@@ -3,10 +3,10 @@ import {
   Container,
   Grid,
   Typography,
+  useTheme,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Header from '../src/components/header';
-import { RadialChart } from 'react-vis';
 
 import PieChart from '../src/components/pie_chart';
 
@@ -18,16 +18,18 @@ const PageBg = styled('div')(({ theme }) => ({
   minHeight: '100vh',
 }));
 
-
 export default function AdvisorHomePage() {
+  const theme = useTheme();
   const userName = "Paola";
 
-  const bankAData = [{angle: 5, label: 'Renda Fixa'}, {angle: 1, label: 'Ações'}, {angle: 1, label: 'FIIs'}]
-  const bankBData = [{angle: 1, label: 'Renda Fixa'}, {angle: 5, label: 'Ações'}, {angle: 2, label: 'FIIs'}]
+  const bankAData = [{x: "Renda Variável", y: 1}, {x: "Ações", y: 4}, {x: "FIIs", y: 10}]
+  const bankBData = [{x: "Renda Variável", y: 1}, {x: "Ações", y: 4}, {x: "FIIs", y: 10}]
   const bankAName = "NuInvest";
   const bankBName = "XP Investimentos";
-  const bankAEarnings = "10.45% a.a";
-  const bankBEarnings = "20.03% a.a";
+  const bankAEarnings = "10.45";
+  const bankBEarnings = "20.03";
+  const bankALogo = '../../public/logos/nu-invest-logo.svg';
+  const bankBLogo = "../../public/logos/nu-invest-logo.svg";
  
   return (
     <PageBg>
@@ -46,22 +48,10 @@ export default function AdvisorHomePage() {
       </Grid>
       <Grid container spacing={2}>
         <Grid item >
-          <Typography variant="h6" component="h1">
-              {bankAName}
-            </Typography>
-          <RadialChart data={bankAData} showLabels width={300} height={300} />
-           <Typography variant="h6" component="h1">
-              {bankAEarnings}
-            </Typography>
+          <PieChart data={bankAData} logo={bankALogo} name={bankAName} earning={bankAEarnings} theme={theme} />
         </Grid>
         <Grid item >
-          <Typography variant="h6" component="h1">
-              {bankBName}
-            </Typography>
-          <PieChart data={bankBData} />
-          <Typography variant="h6" component="h1">
-              {bankBEarnings}
-            </Typography>
+          <PieChart data={bankBData} logo={bankBLogo} name={bankBName} earning={bankBEarnings} theme={theme} />
         </Grid>
       </Grid>
     </PageBg>

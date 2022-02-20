@@ -18,8 +18,6 @@ export default function AdvisorModal({ open, onClose }) {
   const isOpen = Boolean(open);
 
   const handleClose = () => {
-    console.log('oi');
-  
     setContactSuccess(false);
 
     if (onClose) {
