@@ -32,6 +32,9 @@ const theme = createTheme({
       light: '#fffa53',
       main: '#ffc70c',
     },
+    success: {
+      main: '#23D567',
+    },
     error: {
       main: red.A400,
     },
