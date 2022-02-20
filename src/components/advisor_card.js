@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Button, Box, Card, CardMedia, Chip, Typography } from '@mui/material';
+import { Button, IconButton, Box, Card, CardMedia, Chip, Typography } from '@mui/material';
+import ProfileInfo from '@mui/icons-material/InfoOutlined';
 
 export default function AdvisorCard({ data, disabled = false, onClick }) {
   const { name, email, image, investments = [] } = data;
@@ -53,10 +54,13 @@ export default function AdvisorCard({ data, disabled = false, onClick }) {
       <Box 
         sx={{
           display: 'flex',
-          justifyContent: 'flex-end',
+          justifyContent: 'space-between',
           mt: 2,
         }}
       >
+        <IconButton aria-label="veja mais detalhes" disabled={disabled} size="small" color="info">
+          <ProfileInfo />
+        </IconButton>
         <Button
           disabled={disabled}
           disableElevation

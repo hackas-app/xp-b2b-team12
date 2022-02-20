@@ -15,6 +15,8 @@ import { styled } from '@mui/material/styles';
 import AdvisorCard from '../src/components/advisor_card';
 import AdvisorModal from '../src/components/advisor_modal';
 
+import financialAdvisorData from '../src/utils/financial_advisors_data';
+
 const Header = styled('header')(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   borderBottom: `${theme.spacing(3)} solid ${theme.palette.secondary.main}`,
@@ -22,45 +24,6 @@ const Header = styled('header')(({ theme }) => ({
 }));
 
 const formatter = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
-
-const financialAdvisorData = [
-  {
-    email: 'lilianeb@xp.com',
-    image: '/profile/liliane_bittencourt.png',
-    investments: ['CNPI', 'Renda Variável'],
-    name: 'Liliane Bittencourt',
-  },
-  {
-    email: 'fcastanhari@xp.com',
-    image: '/profile/fabricio_castanhari.png',
-    investments: ['CNPI', 'Renda Variável'],
-    name: 'Fabrício Castanhari',
-  },
-  {
-    email: 'manssour@xp.com',
-    image: '/profile/matheus_manssour.png',
-    investments: ['CNPI', 'Renda Variável', 'CDB'],
-    name: 'Matheus Manssour',
-  },
-  {
-    email: 'lucas.m.ribeiro@xp.com',
-    image: '/profile/lucas_ribeiro.png',
-    investments: ['Ações B3', 'Renda Fixa'],
-    name: 'Lucas Ribeiro',
-  },
-  {
-    email: 'carol.aguiar@xp.com',
-    image: '/profile/carol-aguiar.png',
-    investments: ['Criptomoedas'],
-    name: 'Carol Aguiar',
-  },
-  {
-    email: 'hanna.souza@xp.com',
-    image: '/profile/hanna_souza.png',
-    investments: ['CRA', 'CRI', 'LCA', 'LCI', 'FIIs'],
-    name: 'Hanna Souza',
-  },
-];
 
 export default function XPConectaPage() {
   const [open, setOpen] = React.useState(null);
@@ -78,7 +41,9 @@ export default function XPConectaPage() {
           <Typography component="h1" variant="h4" sx={{ color: '#fff'}}>Conecte-se com o time de assessores da XP</Typography>
         </Container>
       </Header>
-      <Container disableGutters sx={{ pl: 4, pr: 4, pt: '100px', pb: '100px' }}>
+      <Container disableGutters sx={{ pl: 4, pr: 4, pt: '50px', pb: '100px' }}>
+        <Typography component="p" variant="h5" sx={{ color: '#000', pb: '50px' }}>Pensando na melhor combinação entre você e seus investimentos, 
+            nós da XP disponibilizamos uma equipe completa de assessores para te ajudar a potencializar seus rendimentos.</Typography>
         <Grid container spacing={5}>
           <Grid item xs={12} sm={12} md={3}>
             <FormControl variant="standard" fullWidth margin="normal">
