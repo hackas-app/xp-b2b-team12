@@ -7,6 +7,7 @@ import {
   Card,
   CardMedia,
   Typography,
+  Link
 } from '@mui/material';
 
 import { styled } from '@mui/material/styles';
@@ -31,6 +32,10 @@ export default function XPConectaPage() {
       <Container disableGutters sx={{ pl: 4, pr: 4, pt: '50px', pb: '100px' }}>
         <Grid container spacing={2} columns={16}>
           <Grid item xs={6}>
+            <Link
+              style={{ textDecoration: 'none' }}
+              href="/xp-conecta"
+            >
           <Card
             elevation={1}
             square
@@ -43,22 +48,25 @@ export default function XPConectaPage() {
             }}
             variant="elevation"
           >
-                <CardMedia
-                  component="img"
-                  image="/logos/xp-conecta-dark.svg"
-                  alt={"XP Conecta Logo"}
-                  sx={{ marginY: 5 }}
-                />
-                <Box sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  flexGrow: 1,
-                  marginY: 5,
-                }}>
-                  <Typography align="center" component="p" variant="18">Encontre um assessor credenciado XP que combina com os seus investimentos</Typography>
-                </Box>
+            <CardMedia
+              component="img"
+              image="/logos/xp-conecta-dark.svg"
+              alt={"XP Conecta Logo"}
+              sx={{ marginY: 5 }}
+            />
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              flexGrow: 1,
+              marginY: 5,
+            }}>
+              <Typography align="center" component="p" variant="18">Encontre um assessor credenciado XP que combina com os seus investimentos</Typography>
+            </Box>
           </Card>
+          </Link>
           </Grid>
+
+
           <Grid item xs={6}>
           <Card
             elevation={1}
