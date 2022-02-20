@@ -41,7 +41,9 @@ export default function XPConectaPage() {
           <Typography component="h1" variant="h4" sx={{ color: '#fff'}}>Conecte-se com o time de assessores da XP</Typography>
         </Container>
       </Header>
-      <Container disableGutters sx={{ pl: 4, pr: 4, pt: '100px', pb: '100px' }}>
+      <Container disableGutters sx={{ pl: 4, pr: 4, pt: '50px', pb: '100px' }}>
+        <Typography component="p" variant="h5" sx={{ color: '#000', pb: '50px' }}>Pensando na melhor combinação entre você e seus investimentos, 
+            nós da XP disponibilizamos uma equipe completa de assessores para te ajudar a potencializar seus rendimentos.</Typography>
         <Grid container spacing={5}>
           <Grid item xs={12} sm={12} md={3}>
             <FormControl variant="standard" fullWidth margin="normal">
