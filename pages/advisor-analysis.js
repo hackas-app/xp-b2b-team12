@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container, Grid, Typography, useTheme } from '@mui/material';
+import { Container, Grid, Typography, useTheme, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import useSWR from 'swr';
 import Header from '../src/components/header';
@@ -12,6 +12,11 @@ const PageBg = styled('div')(({ theme }) => ({
   color: theme.palette.common.white,
   height: '100%',
   minHeight: '100vh',
+}));
+
+const CardDiv = styled('div')(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
 }));
 
 export default function AdvisorHomePage() {
@@ -49,7 +54,7 @@ export default function AdvisorHomePage() {
     // { x: 'LCI', y: Object.keys(lci)?.length },
     // { x: 'AÇÕES', y: Object.keys(stocks)?.length },
   ];
-  const bankAName = 'NuInvest';
+  const bankAName = 'Banco C';
   const bankBName = 'XP Investimentos';
   const bankAEarnings = '10.45';
   const bankBEarnings = '20.03';
@@ -58,42 +63,20 @@ export default function AdvisorHomePage() {
 
   return (
     <PageBg>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={12} md={9}>
-          <Header name={userName} />
-          <Container
-            disableGutters
-            sx={{
-              px: 2,
-              pb: 6,
-            }}
-          >
-            <Typography variant="h3" component="h1" gutterBottom>
-              Visão de investimentos de {userName}
-            </Typography>
-          </Container>
-        </Grid>
-      </Grid>
-      <Grid container spacing={2}>
-        <Grid item>
+      <Header name={userName} />
+      <CardDiv>
+        <Stack>
+          <Typography variant="h3" component="h1" gutterBottom>
+            Visão de investimentos de {userName}
+          </Typography>
           <PieChart
             data={bankAData}
-            logo={bankALogo}
             name={bankAName}
             earning={bankAEarnings}
             theme={theme}
           />
-        </Grid>
-        <Grid item>
-          <PieChart
-            data={bankBData}
-            logo={bankBLogo}
-            name={bankBName}
-            earning={bankBEarnings}
-            theme={theme}
-          />
-        </Grid>
-      </Grid>
+        </Stack>
+      </CardDiv>
     </PageBg>
   );
 }
