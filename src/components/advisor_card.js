@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Box, Card, CardMedia, Chip, Typography } from '@mui/material';
 
-export default function AdvisorCard({ data, disabled = false }) {
+export default function AdvisorCard({ data, disabled = false, onClick }) {
   const { name, email, image, investments = [] } = data;
 
   return (
@@ -57,7 +57,13 @@ export default function AdvisorCard({ data, disabled = false }) {
           mt: 2,
         }}
       >
-        <Button disabled={disabled} variant="contained" disableElevation size="small">
+        <Button
+          disabled={disabled}
+          disableElevation
+          onClick={onClick}
+          size="small"
+          variant="contained"
+        >
           Conectar
         </Button>
       </Box>
