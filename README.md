@@ -18,5 +18,5 @@ Projeto desenvolvido para o Hackathon XP Fev/2022
 - UI baseada no Soma Design System
 
 ## Como instalar
-yarn install
+yarn install  
 yarn dev
