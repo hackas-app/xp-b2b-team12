@@ -1,14 +1,19 @@
 import * as React from 'react';
 import Head from 'next/head';
 import {
+  Badge,
   Box,
   Container,
+  Dialog,
+  DialogContent,
+  DialogTitle,
   FormControl,
   Grid,
   InputLabel,
   MenuItem,
   Select,
   Slider,
+  Stack,
   Typography,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -23,10 +28,57 @@ const Header = styled('header')(({ theme }) => ({
   padding: `100px 0`,
 }));
 
+const Image = styled('img')({
+  backgroundColor: '#e5e5e5',
+  borderRadius: '100%',
+  height: 80,
+  objectFit: 'contain',
+  width: 80,
+});
+
 const formatter = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+
+const feedbacks = {
+  summary: [
+    {
+      title: 'Excelente serviço',
+      image: '/illustrations/like.png',
+      count: 200,
+    },
+    {
+      title: 'Expertise',
+      image: '/illustrations/smart.png',
+      count: 200,
+    },
+    {
+      title: 'Amigável',
+      image: '/illustrations/friendly.png',
+      count: 130,
+    },
+  ],
+};
+
+function FeedbackSummary({ image, title, count }) {
+  return (
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
+      <Badge color="secondary" badgeContent={count} max={999}>
+        <Image src={image} alt="" />
+      </Badge>
+      <Typography variant="body1" sx={{ mt: 1, fontWeight: 500 }}>
+        {title}
+      </Typography>
+    </Box>
+  )
+}
 
 export default function XPConectaPage() {
   const [open, setOpen] = React.useState(null);
+  const [infoOpen, setInfoOpen] = React.useState(false);
   const [investmentType, setInvestmentType] = React.useState('Renda Variável');
   const [sequence, setSequence] = React.useState([300000, 500000]);
 
@@ -95,6 +147,7 @@ export default function XPConectaPage() {
                       && financialAdvisor.investments.indexOf(investmentType) === -1
                     }
                     onClick={() => setOpen(financialAdvisor)}
+                    onInfoClick={() => setInfoOpen(true)}
                   />
                 </Grid>
             ))}
@@ -102,6 +155,40 @@ export default function XPConectaPage() {
         </Grid>
       </Container>
       <AdvisorModal open={open} onClose={() => setOpen(null)} />
+      <Dialog 
+        fullWidth
+        maxWidth="xs"
+        onClose={() => setInfoOpen(false)}
+        open={infoOpen}
+        PaperProps={{
+          square: true,
+          elevation: 2,
+        }}
+      >
+        <DialogTitle>
+          Feedbacks da carteira de clientes
+        </DialogTitle>
+        <DialogContent>
+          <Box
+            sx={{
+              py: 2,
+              mx: '-16px',
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+
+              '> *': {
+                mx: '16px',
+              },
+            }}
+          >
+            {feedbacks.summary.map((data, index) =>
+              <FeedbackSummary key={index}  {...data} />
+            )}
+          </Box>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

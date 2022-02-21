@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, IconButton, Box, Card, CardMedia, Chip, Typography } from '@mui/material';
 import ProfileInfo from '@mui/icons-material/InfoOutlined';
 
-export default function AdvisorCard({ data, disabled = false, onClick }) {
+export default function AdvisorCard({ data, disabled = false, onClick, onInfoClick }) {
   const { name, email, image, investments = [] } = data;
 
   return (
@@ -58,7 +58,7 @@ export default function AdvisorCard({ data, disabled = false, onClick }) {
           mt: 2,
         }}
       >
-        <IconButton aria-label="veja mais detalhes" disabled={disabled} size="small" color="info">
+        <IconButton aria-label="veja mais detalhes" disabled={disabled} size="small" color="info" onClick={onInfoClick}>
           <ProfileInfo />
         </IconButton>
         <Button

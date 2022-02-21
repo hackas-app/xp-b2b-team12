@@ -17,7 +17,7 @@ const NotificationCenterRoot = styled(Card)(({ theme }) => ({
   },
 }));
 
-const notificationData = [
+const advisorNotificationData = [
   {
     avatar: '/profile/joao-silva.png',
     message: <>Planeje a carteira de <b>João Silva</b></>,
@@ -36,6 +36,8 @@ const notificationData = [
 ];
 
 export default function NotificationCenter() {
+  const [notificationData, setNotificationData] = React.useState(advisorNotificationData || []);
+
   return (
     <NotificationCenterRoot component="aside" elevation={0} square>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
@@ -44,7 +46,7 @@ export default function NotificationCenter() {
           vertical: 'bottom',
           horizontal: 'right',
           }} 
-          badgeContent={2} 
+          badgeContent={notificationData.length} 
           color="warning"
         >
           <NotificationsNoneIcon fontSize="large" />
@@ -53,7 +55,7 @@ export default function NotificationCenter() {
       </Stack>
       <List sx={{ mt: 3 }}>
         {notificationData.map(({ message, avatar, link }, index) => (
-          <Badge key={`notifications-${index}`} badgeContent=" " color="warning" variant="dot">
+          <Badge key={`notifications-${index}`} badgeContent=" " color="warning" variant="dot" sx={{ width: '100%' }}>
             <ListItem
               alignItems="flex-start"
               sx={{
