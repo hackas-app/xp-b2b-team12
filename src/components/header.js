@@ -22,7 +22,7 @@ export default function Header({ name }) {
           alignItems: 'center',
         }}
       >
-        <img width={117} height={29} src="/logos/xp-conecta.svg" alt="" />
+        <img width={117} height={29} src="/logos/xp-conecta.png" alt="" />
       </Box>
 
       <Box

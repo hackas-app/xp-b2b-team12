@@ -249,6 +249,7 @@ function AdvisorPage() {
             variant="contained"
             disableElevation
             color="secondary"
+            href={`/advisor-home?userName=${userName}`}
           >
             Enviar Requisição
           </Button>

@@ -83,7 +83,7 @@ export default function Index() {
             width: '100%',
           }}
         >
-          <img src="/logos/xp-conecta.svg" alt="" />
+          <img src="/logos/xp-conecta.png" alt="" />
           <Typography
             variant="h4"
             component="h1"
@@ -140,7 +140,7 @@ export default function Index() {
             <Link
               style={{ textDecoration: 'none' }}
               href={{
-                pathname: '/advisor-request/',
+                pathname: '/advisor-home/',
                 query: {
                   userName,
                 },

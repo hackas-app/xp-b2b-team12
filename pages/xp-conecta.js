@@ -36,7 +36,10 @@ const Image = styled('img')({
   width: 80,
 });
 
-const formatter = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+const formatter = new Intl.NumberFormat('pt-BR', {
+  style: 'currency',
+  currency: 'BRL',
+});
 
 const feedbacks = {
   summary: [
@@ -60,12 +63,14 @@ const feedbacks = {
 
 function FeedbackSummary({ image, title, count }) {
   return (
-    <Box sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <Badge color="secondary" badgeContent={count} max={999}>
         <Image src={image} alt="" />
       </Badge>
@@ -73,7 +78,7 @@ function FeedbackSummary({ image, title, count }) {
         {title}
       </Typography>
     </Box>
-  )
+  );
 }
 
 export default function XPConectaPage() {
@@ -89,17 +94,28 @@ export default function XPConectaPage() {
       </Head>
       <Header>
         <Container disableGutters sx={{ pl: 4, pr: 4 }}>
-          <img src='/logos/xp-conecta.svg' alt="" />
-          <Typography component="h1" variant="h4" sx={{ color: '#fff'}}>Conecte-se com o time de assessores da XP</Typography>
+          <img src="/logos/xp-conecta.png" alt="" />
+          <Typography component="h1" variant="h4" sx={{ color: '#fff' }}>
+            Conecte-se com o time de assessores da XP
+          </Typography>
         </Container>
       </Header>
       <Container disableGutters sx={{ pl: 4, pr: 4, pt: '50px', pb: '100px' }}>
-        <Typography component="p" variant="h5" sx={{ color: '#000', pb: '50px' }}>Pensando na melhor combinação entre você e seus investimentos, 
-            nós da XP disponibilizamos uma equipe completa de assessores para te ajudar a potencializar seus rendimentos.</Typography>
+        <Typography
+          component="p"
+          variant="h5"
+          sx={{ color: '#000', pb: '50px' }}
+        >
+          Pensando na melhor combinação entre você e seus investimentos, nós da
+          XP disponibilizamos uma equipe completa de assessores para te ajudar a
+          potencializar seus rendimentos.
+        </Typography>
         <Grid container spacing={5}>
           <Grid item xs={12} sm={12} md={3}>
             <FormControl variant="standard" fullWidth margin="normal">
-              <InputLabel id="tipo-de-investimento-label">Tipo de Investimento</InputLabel>
+              <InputLabel id="tipo-de-investimento-label">
+                Tipo de Investimento
+              </InputLabel>
               <Select
                 value={investmentType}
                 onChange={(event) => {
@@ -137,25 +153,24 @@ export default function XPConectaPage() {
             </Box>
           </Grid>
           <Grid container item xs={12} sm={12} md={9} spacing={2}>
-            {financialAdvisorData.map(
-              (financialAdvisor, index) => (
-                <Grid item xs={12} sm={6} md={3} key={`advisor-card-${index}`}>
-                  <AdvisorCard
-                    data={financialAdvisor}
-                    disabled={
-                      investmentType !== 'Todos' 
-                      && financialAdvisor.investments.indexOf(investmentType) === -1
-                    }
-                    onClick={() => setOpen(financialAdvisor)}
-                    onInfoClick={() => setInfoOpen(true)}
-                  />
-                </Grid>
+            {financialAdvisorData.map((financialAdvisor, index) => (
+              <Grid item xs={12} sm={6} md={3} key={`advisor-card-${index}`}>
+                <AdvisorCard
+                  data={financialAdvisor}
+                  disabled={
+                    investmentType !== 'Todos' &&
+                    financialAdvisor.investments.indexOf(investmentType) === -1
+                  }
+                  onClick={() => setOpen(financialAdvisor)}
+                  onInfoClick={() => setInfoOpen(true)}
+                />
+              </Grid>
             ))}
           </Grid>
         </Grid>
       </Container>
       <AdvisorModal open={open} onClose={() => setOpen(null)} />
-      <Dialog 
+      <Dialog
         fullWidth
         maxWidth="xs"
         onClose={() => setInfoOpen(false)}
@@ -165,9 +180,7 @@ export default function XPConectaPage() {
           elevation: 2,
         }}
       >
-        <DialogTitle>
-          Feedbacks da carteira de clientes
-        </DialogTitle>
+        <DialogTitle>Feedbacks da carteira de clientes</DialogTitle>
         <DialogContent>
           <Box
             sx={{
@@ -183,9 +196,9 @@ export default function XPConectaPage() {
               },
             }}
           >
-            {feedbacks.summary.map((data, index) =>
-              <FeedbackSummary key={index}  {...data} />
-            )}
+            {feedbacks.summary.map((data, index) => (
+              <FeedbackSummary key={index} {...data} />
+            ))}
           </Box>
         </DialogContent>
       </Dialog>

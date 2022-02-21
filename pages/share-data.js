@@ -53,39 +53,24 @@ const FormControl = styled(MuiFormControl)(({ theme }) => ({
 const dataFieldsList = [
   {
     subheader: 'Dados Cadastrais',
-    fields: [
-      'Dados Cadastrais',
-      'Informações complementares',
-    ],
+    fields: ['Dados Cadastrais', 'Informações complementares'],
   },
   {
     subheader: 'Dados da Conta',
-    fields: [
-      'Saldo',
-      'Limites',
-      'Extratos',
-    ],
+    fields: ['Saldo', 'Limites', 'Extratos'],
   },
   {
     subheader: 'Dados Cartões de Crédito',
-    fields: [
-      'Limite',
-      'Transações',
-      'Faturas',
-    ],
+    fields: ['Limite', 'Transações', 'Faturas'],
   },
   {
     subheader: 'Dados Operações de Crédito',
-    fields: [
-      'Contratos de Crédito',
-    ],
+    fields: ['Contratos de Crédito'],
   },
   {
     subheader: 'Dados de Investimentos',
-    fields: [
-      'Minhas carteiras de investimento',
-    ],
-  }
+    fields: ['Minhas carteiras de investimento'],
+  },
 ];
 
 const steps = [
@@ -99,18 +84,21 @@ export default function ShareDataPage() {
   const [selected, setSelected] = React.useState(false);
 
   const [state, setState] = React.useState(() => {
-    const initialState = dataFieldsList.reduce((acc, { fields }) => {
-      const initFieldsObj = {};
-      fields.forEach((field) => {
-        initFieldsObj[slugify(field)] = true;
-      });
-      return {
-        ...acc,
-        ...initFieldsObj,
+    const initialState = dataFieldsList.reduce(
+      (acc, { fields }) => {
+        const initFieldsObj = {};
+        fields.forEach((field) => {
+          initFieldsObj[slugify(field)] = true;
+        });
+        return {
+          ...acc,
+          ...initFieldsObj,
+        };
+      },
+      {
+        'share-period': 12,
       }
-    }, {
-      'share-period': 12,
-    });
+    );
 
     return initialState;
   });
@@ -132,7 +120,13 @@ export default function ShareDataPage() {
 
           return (
             <FormControlLabel
-              control={<Checkbox checked={checked} onChange={handleChange} name={name} />}
+              control={
+                <Checkbox
+                  checked={checked}
+                  onChange={handleChange}
+                  name={name}
+                />
+              }
               label={label}
               key={label}
             />
@@ -140,20 +134,24 @@ export default function ShareDataPage() {
         })}
       </FormGroup>
       <FormHelperText sx={{ mt: 1 }}>
-        <Link href="#" color="#26A6D3">Mais detalhes</Link>
+        <Link href="#" color="#26A6D3">
+          Mais detalhes
+        </Link>
       </FormHelperText>
     </FormControl>
-  )
+  );
 
   return (
     <div>
       <Head>
-        <title>Selecione os dados que você quer compartilhar - XP Conecta</title>
+        <title>
+          Selecione os dados que você quer compartilhar - XP Conecta
+        </title>
       </Head>
       <Header>
         <Container disableGutters sx={{ m: 0, pl: 4, pr: 4 }}>
-          <img src='/logos/xp-conecta.svg' alt="" />
-          <Typography component="h1" variant="h4" sx={{ color: '#fff'}}>
+          <img src="/logos/xp-conecta.svg" alt="" />
+          <Typography component="h1" variant="h4" sx={{ color: '#fff' }}>
             Selecione os dados que você quer compartilhar
           </Typography>
         </Container>
@@ -172,7 +170,7 @@ export default function ShareDataPage() {
                     <Step key={index} {...stepProps}>
                       <StepLabel>{label}</StepLabel>
                     </Step>
-                  )
+                  );
                 })}
               </Stepper>
             </Box>
@@ -185,11 +183,13 @@ export default function ShareDataPage() {
                 {renderCheckboxList(dataFieldsList[2])}
               </Grid>
               <Grid item xs={12} sm={12} md={6}>
-              {renderCheckboxList(dataFieldsList[3])}
-              {renderCheckboxList(dataFieldsList[4])}
+                {renderCheckboxList(dataFieldsList[3])}
+                {renderCheckboxList(dataFieldsList[4])}
                 <FormControl component="fieldset" variant="standard">
                   <FormLabel component="legend">Por quanto tempo?</FormLabel>
-                  <InputLabel id="share-period-label">Período de compartilhamento</InputLabel>
+                  <InputLabel id="share-period-label">
+                    Período de compartilhamento
+                  </InputLabel>
                   <Select
                     value={state['share-period']}
                     onChange={(event) => {
@@ -216,17 +216,20 @@ export default function ShareDataPage() {
                     <MenuItem value={12}>12 meses</MenuItem>
                   </Select>
                   <FormHelperText sx={{ mt: 1 }}>
-                    <Link href="#" color="#26A6D3">Termos e contratos</Link>
+                    <Link href="#" color="#26A6D3">
+                      Termos e contratos
+                    </Link>
                   </FormHelperText>
                   <Typography variant="subtitle1">
-                    Ao confirmar você aceita os termos e condições de compartilhamento dos seus dados.
+                    Ao confirmar você aceita os termos e condições de
+                    compartilhamento dos seus dados.
                   </Typography>
                 </FormControl>
               </Grid>
             </>
           )}
           {currentStep === 1 && (
-            <Grid container item spacing={4} xs={12} sx={{ px: 4 }} >
+            <Grid container item spacing={4} xs={12} sx={{ px: 4 }}>
               {['Banco A', 'Banco B', 'Banco C'].map((title, index) => (
                 <Grid item xs={12} sm={12} md={6} key={index}>
                   <Card sx={{
@@ -246,7 +249,10 @@ export default function ShareDataPage() {
           )}
           {currentStep === 2 && (
             <Box sx={{ px: 4, py: 6, textAlign: 'center', width: '100%' }}>
-              <CheckCircleOutlineIcon color="success" sx={{ width: '120px', height: '120px', mb: 2 }} />
+              <CheckCircleOutlineIcon
+                color="success"
+                sx={{ width: '120px', height: '120px', mb: 2 }}
+              />
               <Typography variant="h5" component="p" gutterBottom>
                 Tudo certo!
               </Typography>
@@ -261,7 +267,12 @@ export default function ShareDataPage() {
             alignItems="center"
             sx={{ my: 2, pl: 4, pr: 4, width: '100%' }}
           >
-            <Button fullWidth variant="outlined" onClick={() => setCurrentStep(currentStep - 1)} disabled={currentStep !== 1}>
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={() => setCurrentStep(currentStep - 1)}
+              disabled={currentStep !== 1}
+            >
               Voltar
             </Button>
             <Button
@@ -274,7 +285,7 @@ export default function ShareDataPage() {
             >
               {currentStep === 0 ? 'Continuar' : 'Compartilhar Dados'}
             </Button>
-          </Stack>  
+          </Stack>
         </Grid>
         <Grid
           item
@@ -285,12 +296,17 @@ export default function ShareDataPage() {
             display: {
               xs: 'none',
               sm: 'none',
-              md: 'inherit'
+              md: 'inherit',
             },
           }}
         >
           <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
-            <Image src="/images/share-data-image.png" layout="fill" alt="" objectFit="cover" />
+            <Image
+              src="/images/share-data-image.png"
+              layout="fill"
+              alt=""
+              objectFit="cover"
+            />
           </Box>
         </Grid>
       </Grid>

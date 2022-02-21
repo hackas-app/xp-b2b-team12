@@ -29,7 +29,7 @@ const newInvestors = {
   semana: 10,
   mes: 15,
   tudo: 30,
-}
+};
 
 export const emEsperaData = [
   {
@@ -39,8 +39,8 @@ export const emEsperaData = [
   {
     name: 'Paola Antunes',
     image: '/profile/paola-antunes.png',
-  }
-]
+  },
+];
 
 export default function AdvisorHomePage() {
   const [toggleState, setToggleState] = React.useState('semana');
@@ -53,23 +53,29 @@ export default function AdvisorHomePage() {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={9}>
           <Header name={userName} />
-          <Container disableGutters sx={{
-            px: 2,
-            pb: 6,
-          }}>
+          <Container
+            disableGutters
+            sx={{
+              px: 2,
+              pb: 6,
+            }}
+          >
             <Typography variant="h3" component="h1" gutterBottom>
               Bem-vindo(a) {userName}
             </Typography>
             <Grid container spacing={2} sx={{ mt: 3, mb: 5 }}>
               <Grid item xs={12} sm={12} md={6}>
-                <Card square sx={{
-                  alignItems: 'center',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: '100%',
-                  justifyContent: 'center',
-                  p: 2,
-                }}>
+                <Card
+                  square
+                  sx={{
+                    alignItems: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%',
+                    justifyContent: 'center',
+                    p: 2,
+                  }}
+                >
                   <Typography
                     variant="h1"
                     component="span"
@@ -79,15 +85,16 @@ export default function AdvisorHomePage() {
                   >
                     + {newInvestors[toggleState]}
                   </Typography>
-                  <Typography variant="h6" component="span">investidores</Typography>
+                  <Typography variant="h6" component="span">
+                    investidores
+                  </Typography>
                   <ToggleButtonGroup
                     color="secondary"
                     exclusive
-                    onChange={
-                      (event, newToggleState) => {
-                        if (newToggleState) {
-                          setToggleState(newToggleState)
-                        }
+                    onChange={(event, newToggleState) => {
+                      if (newToggleState) {
+                        setToggleState(newToggleState);
+                      }
                     }}
                     value={toggleState}
                     size="small"
@@ -106,14 +113,17 @@ export default function AdvisorHomePage() {
                 </Card>
               </Grid>
               <Grid item xs={12} sm={12} md={6}>
-                <Card square sx={{
-                  alignItems: 'center',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: '100%',
-                  justifyContent: 'center',
-                  p: 2,
-                }}>
+                <Card
+                  square
+                  sx={{
+                    alignItems: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%',
+                    justifyContent: 'center',
+                    p: 2,
+                  }}
+                >
                   <Typography
                     variant="h1"
                     component="span"
@@ -147,9 +157,7 @@ export default function AdvisorHomePage() {
                         alt=""
                       />
                       <CardContent>
-                        <Typography variant="h5">
-                          {name}
-                        </Typography>
+                        <Typography variant="h5">{name}</Typography>
                       </CardContent>
                     </CardActionArea>
                   </Card>
@@ -167,18 +175,13 @@ export default function AdvisorHomePage() {
               color="secondary"
               size="large"
               endIcon={<IosShareIcon />}
+              href="https://hub.xpi.com.br"
             >
               Abra no XP Hub
             </Button>
           </Container>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={3}
-          sx={{ position: 'relative' }}
-        >
+        <Grid item xs={12} sm={12} md={3} sx={{ position: 'relative' }}>
           <NotificationCenter />
         </Grid>
       </Grid>
