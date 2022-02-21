@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Head from 'next/head';
 import {
   Box,
   Button,
@@ -64,6 +65,9 @@ export default function Index() {
 
   return (
     <LoginBackground>
+      <Head>
+        <title>XP Conecta</title>
+      </Head>
       <VideoWrapper>
         <video aria-hidden autoPlay muted loop preload="auto">
           <source
@@ -75,15 +79,21 @@ export default function Index() {
       <LoginContainer maxWidth="xs">
         <Box
           sx={{
-            pt: 2,
-            pb: 2,
-            zIndex: 1,
+            alignItems: 'center',
             display: 'flex',
             flexDirection: 'column',
+            pb: 2,
+            pt: 2,
             width: '100%',
+            zIndex: 1,
+
+            '> img': {
+              width: '280px',
+              mb: 3,
+            }
           }}
         >
-          <img src="/logos/xp-conecta.png" alt="" />
+          <img src="/logos/xp-conecta.svg" alt="" />
           <Typography
             variant="h4"
             component="h1"
