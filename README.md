@@ -18,7 +18,17 @@ Projeto desenvolvido para o Hackathon XP Fev/2022
 - UI baseada no Soma Design System
 
 ## Como instalar
+
+```
 yarn install  
 yarn dev
+```
+
+## Arquivo `.env-local`, contendo:
+
+```
+CLIENT_ID=<your id>
+SECRET_KEY=<your key>
+```
 
 Link para a solução: https://xpconecta.netlify.app/
