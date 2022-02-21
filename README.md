@@ -20,3 +20,5 @@ Projeto desenvolvido para o Hackathon XP Fev/2022
 ## Como instalar
 yarn install  
 yarn dev
+
+Link para a solução: https://xpconecta.netlify.app/
