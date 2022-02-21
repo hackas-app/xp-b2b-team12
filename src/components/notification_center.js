@@ -64,6 +64,9 @@ export default function NotificationCenter() {
     advisorNotificationData || []
   );
 
+  const router = useRouter();
+  const { userName } = router.query;
+
   return (
     <NotificationCenterRoot component="aside" elevation={0} square>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
