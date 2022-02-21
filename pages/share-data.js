@@ -96,6 +96,7 @@ const steps = [
 
 export default function ShareDataPage() {
   const [currentStep, setCurrentStep] = React.useState(0);
+  const [selected, setSelected] = React.useState(false);
 
   const [state, setState] = React.useState(() => {
     const initialState = dataFieldsList.reduce((acc, { fields }) => {
@@ -228,8 +229,10 @@ export default function ShareDataPage() {
             <Grid container item spacing={4} xs={12} sx={{ px: 4 }} >
               {['Banco A', 'Banco B', 'Banco C'].map((title, index) => (
                 <Grid item xs={12} sm={12} md={6} key={index}>
-                  <Card>
-                    <CardActionArea>
+                  <Card sx={{
+                      backgroundColor: (theme) => selected && index === 2 && theme.palette.info.main 
+                    }}>
+                    <CardActionArea onClick={() => setSelected(!selected)}>
                       <CardContent>
                         <Typography variant="h5" component="p">
                           {title}
